@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tracking Api</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#btn").click(function(){
+                    $("#div1").hide();
+                    $("h2").load("test1.txt");
+                });
+            });
+        </script>
+    
+    </head>
+    <body>
+        <h1>Testing</h1>
+
+        <div id="div1"><h2> show the result here! SHOW ME!</h2></div>
+
+        <button id="btn">submit</button>
+        
+        
+    </body>
+</html>
