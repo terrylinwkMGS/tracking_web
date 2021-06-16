@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Tracking Api</title>
+      <script src="https://code.jquery.com/git/jquery-3.x-git.min.js"></script>
+      <!-- <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>-->
+      
+    </head>
+    <body>
+      <h1>Bearer Token Authentication</h1>
+      
+      <p><button id="btnFetch">Click to send a Request</button></p>
+      
+      <div class="container" style="width:900px;height: 500px;border: 1px solid #999; background: #efefef;"></div>
+      
+      <script>
+      jQuery(function(){
+        
+        var arr_trackingNos = ['GTS12345678901HK','GTS12345678902HK'];
+        var _dataJSON = {"trackingNos": arr_trackingNos};
+        
+        jQuery("#btnFetch").click(function(){
+            console.log(_dataJSON);
+            console.log(JSON.stringify(_dataJSON));
+            
+            jQuery.ajax({
+                url: "http://oms.gtschain.com/api/openapi/shipmenttrace/traceShipment",
+                headers: {
+                    'ApiToken':'8SDSADFA923&*@SDASDA'
+                },
+                method: 'POST',
+                dataType: 'json',
+                contentType: "application/json",
+                data: JSON.stringify(_dataJSON),
+                success: function(data){
+                    console.log(data);
+                    },
+                error: function(errMsg) {
+                    console.log(errMsg);
+                    }
+              });
+            
+            
+            
+                
+        });
+        
+        });
+      </script>
+    </body>
+</html>
