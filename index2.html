@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+
+            * {
+                box-sizing: border-box;
+            }
+
+            *, *:after, *:before { margin:0; padding:0; }
+
+            body{
+                margin:0;
+                padding:20px;
+                font-family: sans-serif;
+                font-size:16px;
+            }
+
+            .table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            .table td,.table th {
+                padding:12px 15px;
+                border:1px solid white;
+                text-align: left;
+                font-size:16px;
+                height: 60px;
+            }
+
+            .table th {
+                background-color: white;
+                color:black;
+            }
+
+            .table tbody tr:nth-child(even) {
+                background-color: white;
+            }
+
+            .leftcolumn {
+                float: left;
+                width: 10%;
+            }
+
+            .rightcolumn {
+                float: right;
+                width: 90%;
+                padding-left: 10px;
+                padding-right: 20px;
+            }
+
+            .ton {
+                padding-top: 17px;
+
+            }
+
+            #ton1, #ton2 {
+                display:  inline;
+            }
+
+            .statue {
+                padding-top: 5px;
+                padding-bottom: 20px;
+
+            }
+
+            #statue1, #statue2 {
+                display:  inline;
+            }
+
+            img {
+                max-width: 75%;
+                max-height: 75%;
+                min-width: 75px;
+                min-height: 75px;
+            }
+
+            .row0 {
+                margin-top: 95px;
+                margin-bottom: 20px;
+            }
+
+            .bar {
+                padding-top: 25px;
+                padding-left: 30px;
+            }
+
+            .node {
+                height: 10px;
+                width: 10px;
+                border-radius: 50%;
+                display:inline-block;
+                transition: all 1000ms ease;
+            }
+
+            .divider {
+                height: 50px;
+                width: 2px;
+                margin-left: 4px;
+                transition: all 800ms ease;
+            }
+
+            li p {
+                margin-left: 25px;
+            }
+
+            li {
+                list-style: none;
+                line-height: 1px;
+            }
+
+            .grey { background-color: rgba(201, 201, 201, 1); }
+            .green {
+                background-color:#0bb034;
+            }
+            #statue2 {
+                color: #0bb034;
+            }
+
+            /*responsive*/
+
+            @media(max-width: 800px) {
+                .rightcolumn {
+                    padding-left: 30px;
+                }
+            }
+
+            @media(max-width: 620px) {
+                .rightcolumn {
+                    padding-left: 50px;
+                }
+
+                .divider {
+                    height: 70px;
+                }
+
+                .node {
+                    width: 11px;
+                    height: 11px;
+                }
+            }
+
+            @media(max-width: 420px) {
+                .rightcolumn {
+                    padding-left: 60px;
+                    padding-right: 0;
+                }
+
+                .ton {
+                    padding-top: 10px;
+                }
+
+                .table {
+                    width: 50%;
+                }
+
+                .tab {
+                    padding-left: 10px;
+                }
+
+                .table td {
+                    padding: 12px;
+                    font-size: 10px;
+                }
+
+                .bar {
+                    padding-left: 10px;
+                }
+
+                .divider {
+                    height: 50px;
+                }
+
+            }
+
+            @media (max-width: 320px) {
+                .table {
+                    width: 30%;
+                }
+
+                .tab {
+                    padding-left: 10px;
+                }
+
+                .table td {
+                    padding: 5px;
+                    font-size: 10px;
+                }
+
+                .bar {
+                    padding-left: 10px;
+                }
+
+                .divider {
+                    height: 49px;
+                }
+
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class=""
+        <div class="leftcolumn">
+            <img src="Picture2.png" alt="tick">
+        </div>
+        <div class="rightcolumn">
+            <div class="ton"> 
+                <div id="ton1"><strong>Order number : </strong> </div>
+                <div id="ton2">GTS10201500034HK</div>
+            </div>
+            <div class="statue">
+                <div id="statue1"><strong>Status : </strong></div>
+                <div id="statue2"><strong>Delivered</strong></div>
+            </div>
+        </div>
+        <div class="row0">
+            <strong>Order History:</strong>
+        </div>
+        <div class="leftcolumn bar">
+            <ul id="progress">
+                <li><div class="node grey"></div><p></p></li>
+                <li><div class="divider grey"></div></li>
+                <li><div class="node grey"></div><p></p></li>
+                <li><div class="divider grey"></div></li>
+                <li><div class="node grey"></div><p></p></li>
+                <li><div class="divider grey"></div></li>
+                <li><div class="node grey"></div><p></p></li>
+                <li><div class="divider grey"></div></li>
+                <li><div class="node grey"></div><p></p></li>
+                <li><div class="divider grey"></div></li>
+                <li><div class="node grey"></div><p></p></li>
+                <li><div class="divider grey"></div></li>
+                <li><div class="node grey"></div><p></p></li>
+                <li><div class="divider grey"></div></li>
+                <li><div class="node green"></div><p></p></li>
+            </ul>
+        </div>
+        <div class="rightcolumn tab">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td data-label="location"><strong>HONG KONG</strong></td>
+                        <td data-label="status_message"><strong>INFORMATION RECEIVED</strong></td>
+                        <td data-label="date"><strong>22 MAY 2021</strong></td>
+                        <td data-label="time"><strong>09:20</strong></td>
+                    </tr>
+                    <tr>
+                        <td data-label="location"><strong>HONG KONG</strong></td>
+                        <td data-label="status_message"><strong>SHIPMENT LABEL CREATED</strong></td>
+                        <td data-label="date"><strong>22 MAY 2021</strong></td>
+                        <td data-label="time"><strong>11:30</strong></td>
+                    </tr>
+                    <tr>
+                        <td data-label="location"><strong>HONG KONG</strong></td>
+                        <td data-label="status_message"><strong>ACCEPTANCE:SHIPMENT</strong></td>
+                        <td data-label="date"><strong>22 MAY 2021</strong></td>
+                        <td data-label="time"><strong>12:48</strong></td>
+                    </tr>
+                    <tr>
+                        <td data-label="location"><strong>HONG KONG</strong></td>
+                        <td data-label="status_message"><strong>ARRIVED:FACILITY</strong></td>
+                        <td data-label="date"><strong>22 MAY 2021</strong></td>
+                        <td data-label="time"><strong>13:45</strong></td>
+                    </tr>
+                    <tr>
+                        <td data-label="location"><strong>HONG KONG</strong></td>
+                        <td data-label="status_message"><strong>SORTING/PROCESSING COMPLETE</strong></td>
+                        <td data-label="date"><strong>22 MAY 2021</strong></td>
+                        <td data-label="time"><strong>14:50</strong></td>
+                    </tr>
+                    <tr>
+                        <td data-label="location"><strong>HONG KONG</strong></td>
+                        <td data-label="status_message"><strong>DELIVERY SCHEDULED</strong></td>
+                        <td data-label="date"><strong>22 MAY 2021</strong></td>
+                        <td data-label="time"><strong>15:26</strong></td>
+                    </tr>
+                    <tr>
+                        <td data-label="location"><strong>HONG KONG</strong></td>
+                        <td data-label="status_message"><strong>OUT FOR DELIVERY</strong></td>
+                        <td data-label="date"><strong>22 MAY 2021</strong></td>
+                        <td data-label="time"><strong>16:05</strong></td>
+                    </tr>
+                    <tr>
+                        <td data-label="location"><strong>HONG KONG</strong></td>
+                        <td data-label="status_message"><strong>DELIVERED</strong></td>
+                        <td data-label="date"><strong>22 MAY 2021</strong></td>
+                        <td data-label="time"><strong>19:33</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
