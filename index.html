@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Tracking Api</title>
+      <script src="https://code.jquery.com/git/jquery-3.x-git.min.js"></script>
+      <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+      <!-- <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>-->
+      <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        *, *:after, *:before { margin:0; padding:0; }
+
+        body{
+            margin:0;
+            padding:20px;
+            font-family: sans-serif;
+            font-size:16px;
+        }
+
+        .search_wrap{
+            width: 500px;
+            /* margin: 38px auto; */
+            margin-left: 0px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        .search_wrap .search_box{
+            position: relative;
+            width: 400px;
+            height: 50px;
+        }
+
+        .search_wrap .search_box .input{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 10px 20px;
+            border-radius: 2px;
+            font-size: 18px;
+        }
+
+        .search_wrap .search_box .btn{
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50px;
+            height: 100%;
+            background: black;
+            z-index: 1;
+            cursor: pointer;
+        }
+
+        .search_wrap .search_box .btn:hover{
+            background: rgba(201, 201, 201, 1);	
+        }
+
+        .search_wrap .search_box .btn.btn_common .fas{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .search_wrap.search_wrap_1 .search_box .btn{
+            right: 0;
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+        }
+
+        .search_wrap.search_wrap_1 .search_box .input {
+            padding-right: 80px;
+        }
+
+        #data {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        #data td {
+            padding:12px 15px;
+            border:1px solid white;
+            text-align: left;
+            font-size:16px;
+            height: 60px;
+        }
+
+
+        #data tbody tr:nth-child(even) {
+            background-color: white;
+        }
+
+        .leftcolumn {
+            float: left;
+            width: 10%;
+        }
+
+        .rightcolumn {
+                float: right;
+                width: 90%;
+                padding-left: 10px;
+                padding-right: 20px;
+        }
+
+        #data {
+            float: right;
+            width: 90%;
+            /* padding-left: 10px; */
+            padding-right: 20px;
+        }
+
+        .ton {
+            padding-top: 17px;
+
+        }
+
+        #ton1, #ton2 {
+            display:  inline;
+        }
+
+        .statue {
+            padding-top: 5px;
+            padding-bottom: 20px;
+
+        }
+
+        #statue1, #statue2 {
+            display:  inline;
+        }
+
+        img {
+            max-width: 75%;
+            max-height: 75%;
+            min-width: 75px;
+            min-height: 75px;
+        }
+
+        .row0 {
+            margin-top: 135px;
+            margin-bottom: 20px;
+        }
+
+        .bar {
+            padding-top: 33px;
+            padding-left: 33px;
+        }
+
+        .node {
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            display:inline-block;
+            transition: all 1000ms ease;
+            background-color: rgba(201, 201, 201, 1); 
+        }
+
+        .divider {
+            height: 50px;
+            width: 2px;
+            margin-left: 4px;
+            transition: all 800ms ease;
+            background-color: rgba(201, 201, 201, 1); 
+        }
+
+        li p {
+            margin-left: 25px;
+        }
+
+        li {
+            list-style: none;
+            line-height: 1px;
+        }
+
+        .green {
+            background-color:#0bb034;
+        }
+        #statue2 {
+            color: #0bb034;
+        }
+
+        /*responsive*/
+
+        @media(max-width: 800px) {
+            .rightcolumn {
+                padding-left: 30px;
+            }
+        }
+
+        @media(max-width: 620px) {
+            .rightcolumn {
+                padding-left: 50px;
+            }
+
+            .divider {
+                height: 70px;
+            }
+
+            .node {
+                width: 11px;
+                height: 11px;
+            }
+        }
+
+        @media(max-width: 420px) {
+            .rightcolumn {
+                padding-left: 60px;
+                padding-right: 0;
+            }
+
+            .ton {
+                padding-top: 10px;
+            }
+
+            #data {
+                width: 50%;
+            }
+
+            /* .tab {
+                padding-left: 10px;
+            }  */
+
+            #data td {
+                padding: 12px;
+                font-size: 10px;
+            } 
+
+            .bar {
+                padding-left: 10px;
+            }
+
+            .divider {
+                height: 50px;
+            }
+
+        }
+
+        @media (max-width: 320px) {
+            .table {
+                width: 30%;
+            }
+
+            /* .tab {
+                padding-left: 10px;
+            } */
+
+            #data td {
+                padding: 5px;
+                font-size: 10px;
+            } 
+
+            .bar {
+                padding-left: 10px;
+            }
+
+            .divider {
+                height: 49px;
+            }
+
+        }
+
+      </style>
+
+    </head>
+   
+    <body>
+        <h1>Order Number</h1>
+        <!--search bar & button-->
+        <div class="search_wrap search_wrap_1">
+            <div class="search_box">
+                <input type="text" name="" class="input" placeholder="Type your tracking code here..." id="userInput">
+                <div class="btn btn_common" id="btnFetch">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div id="icon" class="leftcolumn">
+            <img id="logo" src="Picture2.png" alt="tick">
+        </div>
+
+        <div id="right1" class="rightcolumn">
+                <div class="ton"> 
+                    <div id="ton1"><strong>Order number : </strong> </div>
+                    <div id="ton2"></div>
+                </div>
+                <div class="statue">
+                    <div id="statue1"><strong>Status : </strong></div>
+                    <div id="statue2"><strong></strong></div>
+                </div>
+        </div>
+
+        <div id="orderHis" class="row0">
+            <strong>Order History:</strong>
+        </div>
+        
+        <div class="leftcolumn bar" id="bar">
+            <ul id="progress">
+                <li><div id="node1" class="node"></div><p></p></li>
+                <li><div id="divider1" class="divider"></div></li>
+                <li><div id="node2" class="node"></div><p></p></li>
+                <li><div id="divider2" class="divider"></div></li>
+                <li><div id="node3" class="node"></div><p></p></li>
+                <li><div id="divider3" class="divider"></div></li>
+                <li><div id="node4" class="node"></div><p></p></li>
+                <li><div id="divider4" class="divider"></div></li>
+                <li><div id="node5" class="node"></div><p></p></li>
+                <li><div id="divider5" class="divider"></div></li>
+                <li><div id="node6" class="node"></div><p></p></li>
+                <li><div id="divider6" class="divider"></div></li>
+                <li><div id="node7" class="node"></div><p></p></li>
+                <li><div id="divider7" class="divider"></div></li>
+                <li><div id="node8" class="node"></div><p></p></li>
+            </ul>
+        </div>
+    
+      <div class="container">
+      <p id="trackNo"></p>
+      <div id="data"></div>
+      </div>
+      
+      <script>
+        
+        var print_trackNo = document.getElementById("trackNo");
+        var print_data = document.getElementById("data");
+        var ton2 = document.getElementById('ton2');
+        var statue2 = document.getElementById('statue2');
+
+        // nodes and dividers declaration
+        var node1 = document.getElementById('node1');
+        var divider1 = document.getElementById('divider1');
+        var node2 = document.getElementById('node2');
+        var divider2 = document.getElementById('divider2');
+        var node3 = document.getElementById('node3');
+        var divider3 = document.getElementById('divider3');
+        var node4 = document.getElementById('node4');
+        var divider4 = document.getElementById('divider4');
+        var node5 = document.getElementById('node5');
+        var divider5 = document.getElementById('divider5');
+        var node6 = document.getElementById('node6');
+        var divider6 = document.getElementById('divider6');
+        var node7 = document.getElementById('node7');
+        var divider7 = document.getElementById('divider7');
+        var node8 = document.getElementById('node8');
+
+        //testing value = GTS10201500034HK,GTS12345678901HK
+
+      jQuery(function(){
+          jQuery(document).ready(function(){
+            document.getElementById("bar").style.display = "None";
+            document.getElementById("right1").style.display = "None";
+            document.getElementById("logo").style.display = "None";
+            document.getElementById("orderHis").style.display = "None";
+          });
+
+        jQuery("#btnFetch").click(function(){
+            var userInput1 = document.getElementById("userInput").value;
+            var userInput = userInput1.split(",");
+            console.log(userInput);
+            print_data.innerHTML = "";
+            ton2.innerHTML = userInput;
+            for(var a = 0; a < userInput.length; a++){
+                var arr_trackingNos = [userInput[a]];
+                var _dataJSON = {"trackingNos": arr_trackingNos};
+            }
+
+                jQuery.ajax({
+                    url: "http://oms.gtschain.com/api/openapi/shipmenttrace/traceShipment",
+                    headers: {
+                        'ApiToken':'8SDSADFA923&*@SDASDA'
+                    },
+                    method: 'POST',
+                    dataType: 'json',
+                    contentType: "application/json",
+                    data: JSON.stringify(_dataJSON),
+                    success: function(data){
+                        console.log(data);
+                        if (!data.data[0].success){
+                            statue2.innerHTML = "Order Not Found";
+                            document.getElementById("statue2").style.color = "red";
+                            document.getElementById("logo").src = "Picture3.png";
+                            document.getElementById("right1").style.display = "Block";
+                            document.getElementById("logo").style.display = "Block";
+
+                            for (var i = 1; i < 9; i++) {
+                                document.getElementById("node"+i.toString()).style.backgroundColor = "white";
+                            }
+
+                            for (var i = 1; i < 8; i++) {
+                                document.getElementById("divider"+i.toString()).style.backgroundColor = "white";
+                            }
+                        }
+                        else{
+                        function changeDate(date){
+                            var output = date.getDate()+
+                                        " "+(Intl.DateTimeFormat('en-US', options).format(date))+
+                                        " "+date.getFullYear()+
+                                        "  "+date.getHours()+
+                                        ":"+date.getMinutes()+
+                                        ":"+date.getSeconds();
+                            return output
+                        }
+
+                        //UPDATING THE STATUS
+                        var check = data.data[0].traces[data.data[0].traces.length-1].event_description;
+                        console.log(check);
+                        if(check === "DELIVERED"){
+                            statue2.innerHTML = "Delivered";
+                        } else if (check === "REJECTED"){
+                            statue2.innerHTML = "Not Delivered";
+                        } else {
+                            statue2.innerHTML = "Delivery In Progress";
+                        }   
+            
+                        document.getElementById("bar").style.display = "Block";
+                        document.getElementById("right1").style.display = "Block";
+                        document.getElementById("logo").style.display = "Block";
+                        document.getElementById("orderHis").style.display = "Block";
+                        for (var i = data.data[0].traces.length+1; i < 9 ; i++) {
+                            document.getElementById("node"+i.toString()).style.backgroundColor = "white";
+                        }
+
+                        for (var i = data.data[0].traces.length; i < 8 ; i++) {
+                            document.getElementById("divider"+i.toString()).style.backgroundColor = "white";
+                        }
+
+                        document.getElementById("node"+data.data[0].traces.length.toString()).style.backgroundColor = "green";
+
+                        // EXTRACT VALUE FOR HTML HEADER. 
+                        var col = []
+                        for (var i = 0; i < data.data[0].traces.length; i++) {
+                            for (var key in data.data[0].traces[i]) {
+                                if (col.indexOf(key) === -1) {
+                                    col.push(key);
+                                }
+                            }
+                        }
+                        
+                        // CREATE DYNAMIC TABLE.
+                        var table = document.createElement("table")
+                        var tr = table.insertRow(-1)
+                    
+                        // ADD JSON DATA TO THE TABLE AS ROWS.
+                        for (var i = 0; i < data.data[0].traces.length; i++) {
+                            tr = table.insertRow(-1);
+                            for (var j = 0; j < col.length; j++) {
+                                var tabCell = tr.insertCell(-1);
+                                //CHANGING THE UNIX TIME TO DATE
+                                if (j==2){
+                                    var date = new Date(data.data[0].traces[i].event_time)
+                                    var month = date.getMonth()+1;
+                                    var options = {month: 'short'};
+                                    col[j] = changeDate(date)
+                                    tabCell.innerHTML = col[j];
+                                }
+                                else{
+                                tabCell.innerHTML = data.data[0].traces[i][col[j]];
+                                }
+                            }
+                        }         
+                        
+                        print_data.appendChild(table);  
+                           
+                    }   
+                        },
+                    error: function(errMsg) {
+                        
+                        console.log(errMsg);
+                        }
+                
+              
+            });
+              
+        });
+        
+        });
+
+
+        
+        
+      </script>
+    </body>
+</html>
