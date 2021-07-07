@@ -20,6 +20,16 @@
             font-size:16px;
             background: #efefef;
         }
+        
+        .result-item{
+                margin: 15px 0px;
+                background: #fff;
+                box-shadow: 0px 7px 10px #00000036;
+                float: left;
+                width: 100%;
+                padding: 10px;
+                border-radius: 5px;
+        }
 
         .search_wrap{
             width: 100%;
@@ -80,51 +90,52 @@
             padding-right: 80px;
         }
 
-        #data {
+        .data{
             width: 100%;
             border-collapse: collapse;
+          
         }
 
-        #data td {
+        .data td {
             padding:12px 15px;
             border:1px solid white;
             text-align: left;
             font-size:16px;
             height: 60px;
+            
         }
 
 
-        #data tbody tr:nth-child(even) {
+        .data tbody tr:nth-child(even) {
             background-color: white;
         }
 
         .leftcolumn {
             float: left;
-            width: 10%;
+            /*width: 10%;*/
+            text-align: center;
         }
 
         .rightcolumn {
-                float: right;
-                width: 90%;
-                padding-left: 10px;
-                padding-right: 20px;
-        }
-
-        #data {
             float: right;
             width: 90%;
-            /* padding-left: 10px; */
+            padding-left: 10px;
             padding-right: 20px;
         }
 
+        .data {
+            float: right;
+            width: 90%;
+            
+            padding-right: 20px;
+            
+        }
+        
+
         .ton {
             padding-top: 17px;
-
         }
 
-        #ton1, #ton2 {
-            display:  inline;
-        }
 
         .statue {
             padding-top: 5px;
@@ -132,9 +143,6 @@
 
         }
 
-        #statue1, #statue2 {
-            display:  inline;
-        }
 
         img {
             max-width: 75%;
@@ -144,13 +152,14 @@
         }
 
         .row0 {
-            margin-top: 135px;
+            margin-top: 10px;
             margin-bottom: 20px;
         }
 
         .bar {
-            padding-top: 33px;
+            padding-top: 65px;
             padding-left: 33px;
+            padding-bottom: 40px;
         }
 
         .node {
@@ -182,11 +191,15 @@
         .green {
             background-color:#0bb034;
         }
-        #statue2 {
-            color: #0bb034;
-        }
+
 
         /*responsive*/
+
+        @media(min-width: 1072px) {
+            .leftcolumn {
+                width: auto;
+            }
+        }
 
         @media(max-width: 800px) {
             .rightcolumn {
@@ -210,6 +223,9 @@
         }
 
         @media(max-width: 420px) {
+            .leftcolumn {
+                width: 5%;
+            }
             .rightcolumn {
                 padding-left: 60px;
                 padding-right: 0;
@@ -219,15 +235,12 @@
                 padding-top: 10px;
             }
 
-            #data {
-                width: 50%;
+            .data {
+                width: 90%;
             }
 
-            /* .tab {
-                padding-left: 10px;
-            }  */
 
-            #data td {
+            .data td {
                 padding: 12px;
                 font-size: 10px;
             } 
@@ -247,11 +260,7 @@
                 width: 30%;
             }
 
-            /* .tab {
-                padding-left: 10px;
-            } */
-
-            #data td {
+            .data td {
                 padding: 5px;
                 font-size: 10px;
             } 
@@ -271,119 +280,63 @@
     </head>
    
     <body>
+        
         <h1>Order Number</h1>
         <!--search bar & button-->
         <div class="search_wrap search_wrap_1">
             <div class="search_box">
-                <input type="text" name="" class="input" placeholder="Type your tracking code here..." id="userInput">
+                <input type="search" name="" class="input searchapi" placeholder="Type your tracking code here (separate by ',' )" id="userInput">
                 <div class="btn btn_common" id="btnFetch">
                     <i class="fas fa-search"></i>
                 </div>
             </div>
         </div>
-        
-        <div id="icon" class="leftcolumn">
-            <img id="logo" src="Picture2.png" alt="tick">
-        </div>
 
-        <div id="right1" class="rightcolumn">
-                <div class="ton"> 
-                    <div id="ton1"><strong>Order number : </strong> </div>
-                    <div id="ton2"></div>
-                </div>
-                <div class="statue">
-                    <div id="statue1"><strong>Status : </strong></div>
-                    <div id="statue2"><strong></strong></div>
-                </div>
-        </div>
+        <h5>testing number:  GTS10201500034HK,GTS12345678901HK</h5>
+        <div id="result_container" class="result_container">
 
-        <div id="orderHis" class="row0">
-            <strong>Order History:</strong>
-        </div>
-        
-        <div class="leftcolumn bar" id="bar">
-            <ul id="progress">
-                <li><div id="node1" class="node"></div><p></p></li>
-                <li><div id="divider1" class="divider"></div></li>
-                <li><div id="node2" class="node"></div><p></p></li>
-                <li><div id="divider2" class="divider"></div></li>
-                <li><div id="node3" class="node"></div><p></p></li>
-                <li><div id="divider3" class="divider"></div></li>
-                <li><div id="node4" class="node"></div><p></p></li>
-                <li><div id="divider4" class="divider"></div></li>
-                <li><div id="node5" class="node"></div><p></p></li>
-                <li><div id="divider5" class="divider"></div></li>
-                <li><div id="node6" class="node"></div><p></p></li>
-                <li><div id="divider6" class="divider"></div></li>
-                <li><div id="node7" class="node"></div><p></p></li>
-                <li><div id="divider7" class="divider"></div></li>
-                <li><div id="node8" class="node"></div><p></p></li>
-            </ul>
         </div>
     
-      <div class="container">
-      <p id="trackNo"></p>
-      <div id="data"></div>
-      </div>
       
       <script>
+        //var result_container = document.getElementById("result_container");
         
-        var print_trackNo = document.getElementById("trackNo");
-        var print_data = document.getElementById("data");
-        var ton2 = document.getElementById('ton2');
-        var statue2 = document.getElementById('statue2');
-
-        // nodes and dividers declaration
-        var node1 = document.getElementById('node1');
-        var divider1 = document.getElementById('divider1');
-        var node2 = document.getElementById('node2');
-        var divider2 = document.getElementById('divider2');
-        var node3 = document.getElementById('node3');
-        var divider3 = document.getElementById('divider3');
-        var node4 = document.getElementById('node4');
-        var divider4 = document.getElementById('divider4');
-        var node5 = document.getElementById('node5');
-        var divider5 = document.getElementById('divider5');
-        var node6 = document.getElementById('node6');
-        var divider6 = document.getElementById('divider6');
-        var node7 = document.getElementById('node7');
-        var divider7 = document.getElementById('divider7');
-        var node8 = document.getElementById('node8');
-
         //testing value = GTS10201500034HK,GTS12345678901HK
+        
 
       jQuery(function(){
-          jQuery(document).ready(function(){
-            document.getElementById("bar").style.display = "None";
-            document.getElementById("right1").style.display = "None";
-            document.getElementById("logo").style.display = "None";
-            document.getElementById("orderHis").style.display = "None";
-          });
+            jQuery("#btnFetch").click(function(){init_api();});
+            jQuery(".searchapi.input").submit(function(){init_api();});
+            jQuery(".searchapi.input").keypress(function(e){
+                if(e.which == 13){//Enter key pressed
+                    init_api();
+                }
+            });
+            
 
-        jQuery("#btnFetch").click(function(){
+        });
+      
+      function init_api(){
+        
             
             var __lang = "zh-TW"; //  en-US, zh_CN, zh-TW
             
             var userInput1 = document.getElementById("userInput").value;
             var userInput = userInput1.split(",");
-            console.log(userInput);
-            print_data.innerHTML = "";
-            ton2.innerHTML = userInput;
             
+            
+            for (var a = 0; a < userInput.length; a++){
+                userInput[a] = userInput[a].replace(/\s/g, '');
+            }
+            
+            
+            
+            
+            console.log(userInput);
+
             var arr_trackingNos = userInput;
             var _dataJSON = {"language":__lang,"trackingNos": arr_trackingNos};   // ***Language switch here
-            
-            /*Aaron's origional
-            
-            for(var a = 0; a < userInput.length; a++){
-                var arr_trackingNos = [userInput[a]];
-                var arr_trackingNos = userInput;
-                
-                var _dataJSON = {"trackingNos": arr_trackingNos};
-            }
-            */
-            
-            
+
 
                 jQuery.ajax({
                     url: "http://oms.gtschain.com/api/openapi/shipmenttrace/traceShipment",
@@ -395,106 +348,128 @@
                     contentType: "application/json",
                     data: JSON.stringify(_dataJSON),
                     success: function(data){
+                        console.log(_dataJSON);
                         console.log(data);
-                        if (!data.data[0].success){
-                            statue2.innerHTML = "Order Not Found";
-                            document.getElementById("statue2").style.color = "red";
-                            document.getElementById("logo").src = "Picture3.png";
-                            document.getElementById("right1").style.display = "Block";
-                            document.getElementById("logo").style.display = "Block";
-
-                            for (var i = 1; i < 9; i++) {
-                                document.getElementById("node"+i.toString()).style.backgroundColor = "white";
+                        $(".result_container").html('');   //".result-item order_"+a.toString()
+                        
+                        
+                        for (var a = 0; a < data.data.length; a++){
+                            
+                            
+                            function changeDate(date){
+                                var output = date.getDate()+
+                                            " "+(Intl.DateTimeFormat('en-US', options).format(date))+
+                                            " "+date.getFullYear()+
+                                            "  "+date.getHours()+
+                                            ":"+date.getMinutes()+
+                                            ":"+date.getSeconds();
+                                return output
+                            }
+                            
+                        
+                        $(".result_container").append('<div class="result-item order_'+a.toString()+'"></div><!--result-item -->');
+                        
+                            
+                            
+                            //append icon, right1
+                            if (!data.data[a].success){
+                                
+                                
+                                $(".result-item.order_"+a.toString()).append('<div class="leftcolumn"><img id="logo'+a.toString()+'" src="Picture3.png" alt="tick"></div>');
+                                $(".result-item.order_"+a.toString()).append('<div id="right1" class="rightcolumn"><div class="ton"><div style="display: inline;"><strong>Order number : </strong> </div><div id="ton'+a.toString()+'" style="display: inline;"></div></div><div class="statue"><div style="display: inline;"><strong>Status : </strong></div><div id="statue'+a.toString()+'" style="color: red; display: inline;""><strong>Order Not Found</strong></div></div></div>');
+                                
+                                //document.getElementById("ton"+a.toString()).innerHTML = data.data[a].trackingNo;
+                                document.getElementById("ton"+a.toString()).innerHTML = data.data[a].trackingNo;
                             }
 
-                            for (var i = 1; i < 8; i++) {
-                                document.getElementById("divider"+i.toString()).style.backgroundColor = "white";
-                            }
-                        }
-                        else{
-                        function changeDate(date){
-                            var output = date.getDate()+
-                                        " "+(Intl.DateTimeFormat('en-US', options).format(date))+
-                                        " "+date.getFullYear()+
-                                        "  "+date.getHours()+
-                                        ":"+date.getMinutes()+
-                                        ":"+date.getSeconds();
-                            return output
-                        }
+                            else{
+                                
 
-                        //UPDATING THE STATUS
-                        var check = data.data[0].traces[data.data[0].traces.length-1].event_description;
-                        console.log(check);
-                        if(check === "DELIVERED"){
-                            statue2.innerHTML = "Delivered";
-                        } else if (check === "REJECTED"){
-                            statue2.innerHTML = "Not Delivered";
-                        } else {
-                            statue2.innerHTML = "Delivery In Progress";
+                                //append icon, right1, orderHis
+                                
+                                
+                                $(".result-item.order_"+a.toString()).append('<div id="icon" class="leftcolumn"><img id="logo'+a.toString()+'" src="Picture2.png" alt="tick"></div>');
+                                $(".result-item.order_"+a.toString()).append('<div id="right1" class="rightcolumn"><div class="ton"><div style="display: inline;"><strong>Order number : </strong> </div><div id="ton'+a.toString()+'" style="display: inline;"></div></div><div class="statue"><div style="display: inline;"><strong>Status : </strong></div><div id="statue'+a.toString()+'" style="color: green; display: inline;"><strong></strong></div></div></div>');
+                                document.getElementById("ton"+a.toString()).innerHTML = data.data[a].trackingNo;
+                                $(".result-item.order_"+a.toString()).append('<div id="orderHis" class="rightcolumn row0" ><strong>Order History:</strong></div>');
+                                if (data.data[a].traces.length == 1){
+                                    $(".result-item.order_"+a.toString()).append('<div class="leftcolumn bar" id="bar"> <ul id="progress'+a.toString()+'"></ul></div>');
+                                    $("#progress"+a.toString()).append('<li><div class="node" style="background-color: green;"></div>');
+                                } else if (data.data[a].traces.length > 1){
+                                    $(".result-item.order_"+a.toString()).append('<div class="leftcolumn bar" id="bar"> <ul id="progress'+a.toString()+'"></ul></div>');
+                                    for (var b = 0; b < data.data[a].traces.length-1; b++){
+                                        $("#progress"+a.toString()).append('<li><div class="node"></div></li><li><div class="divider"></div></li>');
+                                    }
+                                    $("#progress"+a.toString()).append('<li><div class="node" style="background-color: green;"></div>');
+                                }
+
+                                $(".result-item.order_"+a.toString()).append('<div id="data'+a.toString()+'" class="data"></div>');
+                                var temp = document.getElementById("data"+a.toString());
+
+                                //UPDATING THE STATUS
+                                var check = data.data[a].traces[data.data[a].traces.length-1].event_description;
+                                console.log(check);
+                                if(check === "DELIVERED"){
+                                    document.getElementById("statue"+a.toString()).innerHTML = "Delivered";
+                                } else if (check === "REJECTED"){
+                                    document.getElementById("logo"+a.toString()).src = "Picture3.png";
+                                    document.getElementById("statue"+a.toString()).innerHTML = "Not Delivered";
+                                } else {
+                                    document.getElementById("logo"+a.toString()).src = "Picture1.png";
+                                    document.getElementById("statue"+a.toString()).innerHTML = "Delivery In Progress";
+                                }   
+
+                                // EXTRACT VALUE FOR HTML HEADER. 
+                                var col = [];
+                                for (var i = 0; i < data.data[a].traces.length; i++) {
+                                    for (var key in data.data[a].traces[i]) {
+                                        if (col.indexOf(key) === -1) {
+                                            col.push(key);
+                                        }
+                                    }
+                                }
+                                
+                                // CREATE DYNAMIC TABLE.
+                                var table = document.createElement("table");
+                                var tr = table.insertRow(-1);
+                            
+                                // ADD JSON DATA TO THE TABLE AS ROWS.
+                                for (var i = 0; i < data.data[a].traces.length; i++) {
+                                    tr = table.insertRow(-1);
+                                    for (var j = 0; j < col.length; j++) {
+                                        var tabCell = tr.insertCell(-1);
+                                        //CHANGING THE UNIX TIME TO DATE
+                                        if (j==2){
+                                            var date = new Date(data.data[a].traces[i].event_time)
+                                            var month = date.getMonth()+1;
+                                            var options = {month: 'short'};
+                                            col[j] = changeDate(date)
+                                            tabCell.innerHTML = col[j];
+                                        }
+                                        else{
+                                        tabCell.innerHTML = data.data[a].traces[i][col[j]];
+                                        }
+                                    }
+                                }         
+                                
+                                //temp.innerHTML = "";
+                                temp.appendChild(table);
+                                
+                                
+                            }
+                            
+                            
                         }   
-            
-                        document.getElementById("bar").style.display = "Block";
-                        document.getElementById("right1").style.display = "Block";
-                        document.getElementById("logo").style.display = "Block";
-                        document.getElementById("orderHis").style.display = "Block";
-                        for (var i = data.data[0].traces.length+1; i < 9 ; i++) {
-                            document.getElementById("node"+i.toString()).style.backgroundColor = "white";
-                        }
-
-                        for (var i = data.data[0].traces.length; i < 8 ; i++) {
-                            document.getElementById("divider"+i.toString()).style.backgroundColor = "white";
-                        }
-
-                        document.getElementById("node"+data.data[0].traces.length.toString()).style.backgroundColor = "green";
-
-                        // EXTRACT VALUE FOR HTML HEADER. 
-                        var col = []
-                        for (var i = 0; i < data.data[0].traces.length; i++) {
-                            for (var key in data.data[0].traces[i]) {
-                                if (col.indexOf(key) === -1) {
-                                    col.push(key);
-                                }
-                            }
-                        }
-                        
-                        // CREATE DYNAMIC TABLE.
-                        var table = document.createElement("table")
-                        var tr = table.insertRow(-1)
-                    
-                        // ADD JSON DATA TO THE TABLE AS ROWS.
-                        for (var i = 0; i < data.data[0].traces.length; i++) {
-                            tr = table.insertRow(-1);
-                            for (var j = 0; j < col.length; j++) {
-                                var tabCell = tr.insertCell(-1);
-                                //CHANGING THE UNIX TIME TO DATE
-                                if (j==2){
-                                    var date = new Date(data.data[0].traces[i].event_time)
-                                    var month = date.getMonth()+1;
-                                    var options = {month: 'short'};
-                                    col[j] = changeDate(date)
-                                    tabCell.innerHTML = col[j];
-                                }
-                                else{
-                                tabCell.innerHTML = data.data[0].traces[i][col[j]];
-                                }
-                            }
-                        }         
-                        
-                        print_data.appendChild(table);  
-                           
-                    }   
-                        },
+                    },
                     error: function(errMsg) {
-                        
                         console.log(errMsg);
-                        }
+                    }
                 
               
             });
-              
-        });
-        
-        });
+        return false;
+      
+      }
 
 
         
