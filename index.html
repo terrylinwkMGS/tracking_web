@@ -112,7 +112,7 @@
 
         .leftcolumn {
             float: left;
-            /*width: 10%;*/
+            width: 10%;
             text-align: center;
         }
 
@@ -195,7 +195,11 @@
 
         /*responsive*/
 
-        @media(min-width: 1072px) {
+        @media(max-width: 1072px) {
+            
+            #icon.leftcolumn{
+                width: 10%;
+            }
             .leftcolumn {
                 width: auto;
             }
@@ -222,7 +226,7 @@
             }
         }
 
-        @media(max-width: 420px) {
+        @media(max-width: 499px) {
             .leftcolumn {
                 width: 5%;
             }
@@ -241,7 +245,7 @@
 
 
             .data td {
-                padding: 12px;
+                padding: 10px;
                 font-size: 10px;
             } 
 
@@ -255,7 +259,7 @@
 
         }
 
-        @media (max-width: 320px) {
+        @media (max-width: 342px) {
             .table {
                 width: 30%;
             }
