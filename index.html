@@ -40,31 +40,36 @@
         }
 
         .search_wrap .search_box{
-            position: relative;
+            /*position: relative;*/
             width: 100%;
-            height: 50px;
+            /*height: 50px;*/
         }
 
         .search_wrap .search_box .input{
-            position: absolute;
+            /*position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
             height: 100%;
-            padding: 10px 20px;
+            padding: 10px 20px;*/
+            width: 100%;
             border-radius: 2px;
             font-size: 18px;
+            
         }
 
         .search_wrap .search_box .btn{
-            position: absolute;
+            /*position: absolute;
             top: 0;
             right: 0;
             width: 50px;
-            height: 100%;
+            height: 100%;*/
+            width: 100%;
+            height: 30px;
             background: black;
             z-index: 1;
             cursor: pointer;
+            text-align: center;
+            padding: 5px;
         }
 
         .search_wrap .search_box .btn:hover{
@@ -72,10 +77,10 @@
         }
 
         .search_wrap .search_box .btn.btn_common .fas{
-            position: absolute;
+            /*position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);*/
             color: #fff;
             font-size: 20px;
         }
@@ -87,7 +92,8 @@
         }
 
         .search_wrap.search_wrap_1 .search_box .input {
-            padding-right: 80px;
+         /*   padding-right: 80px;*/
+         padding: 10px;
         }
 
         .data{
@@ -289,14 +295,17 @@
         <!--search bar & button-->
         <div class="search_wrap search_wrap_1">
             <div class="search_box">
-                <input type="search" name="" class="input searchapi" placeholder="Type your tracking code here (separate by ',' )" id="userInput">
+                <!--<input type="search" name="" class="input searchapi" placeholder="Type your tracking code here (separate by ',' )" id="userInput">-->
+                
+                <textarea class="input searchapi" rows="3" placeholder="Type your tracking code here (One order number per line. )" id="userInput"></textarea>
+                
                 <div class="btn btn_common" id="btnFetch">
                     <i class="fas fa-search"></i>
                 </div>
             </div>
         </div>
 
-        <h5>testing number:  GTS10201500034HK,GTS12345678901HK</h5>
+        <h5>testing number:  GTS10201500034HK   GTS12345678901HK</h5>
         <div id="result_container" class="result_container">
 
         </div>
@@ -326,8 +335,13 @@
             var __lang = "zh-TW"; //  en-US, zh_CN, zh-TW
             
             var userInput1 = document.getElementById("userInput").value;
-            var userInput = userInput1.split(",");
+            //var userInput = userInput1.split(",");
+            //var userInput = userInput1.split('\n');
+            var userInput = userInput1.split(/\n/);
             
+            
+                //$.each($('#data').val().split(\n/), function(i, line){
+
             
             for (var a = 0; a < userInput.length; a++){
                 userInput[a] = userInput[a].replace(/\s/g, '');
